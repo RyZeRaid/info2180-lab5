@@ -7,6 +7,11 @@ $dbname = 'world';
 $country = $_REQUEST['country'];
 $context = $_REQUEST['context'];
 
+if($country != ""){
+  $country = filter_var($country, FILTER_SANITIZE_STRING);
+  $country = trim($country);
+}
+
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 
 if($country === ""){

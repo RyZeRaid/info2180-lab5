@@ -8,7 +8,6 @@ window.onload = function(){
 
 
     function onClick(e){
-        console.log(e.target.id)
         let response = document.querySelector("#country").value;
 
         const xhr = new XMLHttpRequest();
