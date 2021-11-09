@@ -1,13 +1,15 @@
 window.onload = function(){
 
-    let button = document.querySelector("#lookup");
+    let button1 = document.querySelector("#lookup");
+    let button2 = document.querySelector("#lookup_cities");
 
-    button.addEventListener("click", onClick);
+    button1.addEventListener("click", onClick);
+    button2.addEventListener("click", onClick);
 
 
     function onClick(e){
+        console.log(e.target.id)
         let response = document.querySelector("#country").value;
-        console.log(response);
 
         const xhr = new XMLHttpRequest();
 
@@ -16,8 +18,12 @@ window.onload = function(){
                 document.getElementById("result").innerHTML = this.responseText;
             }
         }
-
-        xhr.open('GET', 'world.php?country='+response, true);
+        if(e.target.id === "lookup"){
+            xhr.open('GET', 'world.php?country='+response+"&context", true);
+        }else if (e.target.id === "lookup_cities"){
+            xhr.open('GET', 'world.php?country='+response+"&context=cities", true);
+        }
+        
         xhr.send();
     }
 }
