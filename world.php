@@ -17,10 +17,24 @@ if($country === ""){
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 ?>
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+
+<?php
+echo "<table border =\"1\" style='border-collapse: collapse'>";
+  echo "<tr>";
+  echo "<th>Name</th>";
+  echo "<th>Continent</th>";
+  echo "<th>Independence</th>";
+  echo "<th>Head of State</th>";
+  echo "</tr>";
+
+  foreach ($results as $row){
+    echo "<tr> \n";
+		   echo "<td>" .$row['name']. "</td> \n";
+       echo "<td>" .$row['continent']. "</td> \n";
+       echo "<td>" .$row['independence_year']. "</td> \n";
+       echo "<td>" .$row['head_of_state']. "</td> \n";
+	  echo "</tr>";
+  }
+		echo "</table>";
+?>
